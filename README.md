@@ -16,7 +16,7 @@ A single, self‑contained HTML file that implements an offline TOTP authenticat
 
 - Implements RFC 6238 (TOTP) and RFC 4226 (HOTP) core algorithm.
 - Uses HMAC‑SHA1, 6‑digit codes, 30‑second time step.
-- No external dependencies; after the page loads it performs no network requests.
+- No external dependencies. The file itself performs no network requests after it loads. A host, CDN, or browser extension can still add one; that is outside this file.
 
 ## Who is it for?
 

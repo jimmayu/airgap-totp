@@ -14,6 +14,7 @@
 ## Out‑of‑Scope
 
 - The **delivery channel** of `index.html` (GitHub, a USB stick, email, etc.). A compromised copy defeats the design.
+- Host or CDN rewriting of the HTML before it reaches the browser. Cloudflare Web Analytics, Zaraz, and similar inject a script tag ahead of the page. That request is made even if the meta CSP later blocks the script. The meta policy cannot stop an injection that is not in the file. If the loaded page contains a script that is not in your saved copy, do not enter a secret.
 - GitHub Pages TLS and the security of the GitHub account hosting the demo; the demo is provided for convenience only and is not air‑gapped.
 - The underlying operating system, hardware, or browser implementation beyond the page’s CSP.
 
@@ -33,7 +34,7 @@
 
 | Threat | Mitigation |
 |--------|------------|
-| Secret exfiltration via network request | CSP `connect-src 'none'` and no fetch/XHR/WS calls. |
+| Secret exfiltration via a request in this file | CSP `connect-src 'none'` and no fetch/XHR/WS calls. A host or CDN can still inject a request before that policy applies. |
 | Secret persisted on disk | No use of cookies, storage APIs, or URL parameters. |
 | Secret leaked via clipboard after copy | The copy operation is explicit; user can clear clipboard afterward. |
 | Malicious version of `index.html` | Users are instructed to verify the script (CSP header, absence of network calls) and to use a saved copy from a trusted source. |
