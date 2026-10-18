@@ -98,7 +98,7 @@
 <body>
 <main>
   <h1>TOTP</h1>
-  <p class="muted">Offline. SHA-1, 6 digits, 30-second step. Nothing leaves this page.</p>
+  <p class="muted">Offline. SHA-1, 6 digits, 30-second step. This file makes no network requests.</p>
 
   <label for="secret">Shared secret</label>
   <input id="secret" type="password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text" placeholder="Base32 or otpauth:// URI">
@@ -116,10 +116,11 @@
     <ul>
       <li>store the secret (no cookies, storage, or URL)</li>
       <li>contact any server after it loads</li>
+      <li>stop a host, CDN, or extension from adding a request this file does not contain</li>
       <li>show the previous or next code</li>
     </ul>
     <p id="engine"></p>
-    <p>Source: <a href="https://github.com/jimmayu/airgap-totp">github.com/jimmayu/airgap-totp</a>. For a real secret, use a saved copy of this file, not a hosted page.</p>
+    <p>Source: <a href="https://github.com/jimmayu/airgap-totp">github.com/jimmayu/airgap-totp</a>. For a real secret, use a saved copy of this file, not a hosted page. If the loaded page has a script that is not in that file, do not enter a secret.</p>
   </footer>
 </main>
 <script>
